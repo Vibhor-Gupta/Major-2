@@ -83,9 +83,9 @@ convolutionNet=NeuralNet(
     conv2d4_nonlinearity=lasagne.nonlinearities.rectify,
 
     #conv2d5
-    conv2d2_num_filters=128,
-    conv2d2_filter_size=(5, 3),
-    conv2d2_nonlinearity=lasagne.nonlinearities.rectify,
+    conv2d5_num_filters=128,
+    conv2d5_filter_size=(5, 3),
+    conv2d5_nonlinearity=lasagne.nonlinearities.rectify,
 
     #dense6
     dense6_num_units=4096,

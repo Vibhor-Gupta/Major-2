@@ -1,7 +1,7 @@
 import cv2
 import os
 import labels
-from sklearn.cross_validation import train_test_split
+# from sklearn.cross_validation import train_test_split
 
 def load_images_from_folder(folder,data):
     images = []
@@ -20,12 +20,12 @@ def crop_images(folder,data):
  	return cropped
 
 def resize_images(folder,data):
- 	images=crop_images(folder,data)
- 	resized=[]
-	for im in images:
-		re=cv2.resize(im,(128,64))
-		resized.append(re)
-	return resized
+    images=crop_images(folder,data)
+    resized=[]
+    for im in images:
+        re=cv2.resize(im,(128,64))
+        resized.append(re)
+    return resized
 
 def grayscale_images(folder,data):
     images=resize_images(folder,data)

@@ -5,7 +5,7 @@
 #5=59
 #6=54
 #7=185
-from sklearn.cross_validation import train_test_split
+# from sklearn.cross_validation import train_test_split
 import random
 
 label =	{	
@@ -761,9 +761,26 @@ label =	{
 			"1000.jpg" : 3
 }
 
+# def split_dataset(v):
+# 	train=[]
+# 	test=[]
+# 	k=len(v)
+# 	k=k*1.0
+
+# 	t_len=int(k*0.8)
+# 	s_len=int(k*0.2)
+
+# 	c=0
+# 	if v is not None:
+# 		for a in v:
+# 			c+=1
+# 			if c<=t_len:
+# 				train.append(a)
+# 			test.append(a)
+# 	return (train,test)
 
 new_labels={}
-for k,v in label.iteritems():
+for k,v in label.items():
 	new_labels.setdefault(v,[]).append(k)
 
 # for k,v in new_labels.iteritems():
@@ -781,38 +798,75 @@ test_image_2=[]
 train_labels_2=[]
 test_labels_2=[]
 a=0
-for k , v in new_labels.iteritems():
-    train,test=train_test_split(v,train_size=0.8)
-    for t in train:
-    	a+=1
-    	if a>32:
-    		break
-        train_image.append(t)
-        train_labels.append(label[t])
-    a=0
-    for s in test:
-    	a+=1
-    	if a>8:
-    		break
-     	test_image.append(s)
-       	test_labels.append(label[s])
 
-a=0
-for k , v in new_labels.iteritems():
-    train,test=train_test_split(v,train_size=0.8)
-    for t in random.shuffle(train):
-    	a+=1
-    	if a>32:
-    		break
-        train_image_2.append(t)
-        train_labels_2.append(label[t])
-    a=0
-    for s in random.shuffle(test):
-    	a+=1
-    	if a>8:
-    		break
-     	test_image_2.append(s)
-       	test_labels_2.append(label[s])
+for k , v in new_labels.items():
+	# (train,test)=split_dataset(v)
+	train=[]
+	test=[]
+	k=len(v)
+	k=k*1.0
+
+	t_len=int(k*0.8)
+	s_len=int(k*0.2)
+
+	c=0
+	for a in v:
+		c+=1
+		if c<=t_len:
+			train.append(a)
+		test.append(a)
+	a=0
+	for t in train:
+		a+=1
+		if a>32:
+			break
+		train_image.append(t)
+		train_labels.append(label[t])
+
+
+	a=0
+	if test is not None:
+		for s in test:
+			a+=1
+			if a>8:
+				break
+			test_image.append(s)
+			test_labels.append(label[s])
+
+# a=0
+# for k , v in new_labels.items():
+# 	# (train,test)=split_dataset(v)
+# 	train=[]
+# 	test=[]
+# 	k=len(v)
+# 	k=k*1.0
+
+# 	t_len=int(k*0.8)
+# 	s_len=int(k*0.2)
+
+# 	c=0
+# 	if v is not None:
+# 		for a in v:
+# 			c+=1
+# 			if c<=t_len:
+# 				train.append(a)
+# 			test.append(a)
+# 	a=0
+# 	if train is not None:	
+# 		for t in random.shuffle(train):
+# 			a+=1
+# 			if a>32:
+# 				break
+# 			train_image_2.append(t)
+# 			train_labels_2.append(label[t])
+# 	a=0
+# 	if test is not None:
+# 		for s in random.shuffle(test):
+# 			a+=1
+# 			if a>8:
+# 				break
+# 			test_image_2.append(s)
+# 			test_labels_2.append(label[s])
 
 
 # print len(train_image)
