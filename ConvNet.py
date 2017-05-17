@@ -109,7 +109,7 @@ print "running the neural net"
 
 #     #output
 #     output_nonlinearity=lasagne.nonlinearities.softmax,
-#     output_num_units=256,
+#     output_num_units=7,
 
 #     #optimization method params
 #     update=nesterov_momentum,
@@ -169,7 +169,7 @@ print "running the neural net"
 
     # # output
     # output_nonlinearity=lasagne.nonlinearities.softmax,
-    # output_num_units=256,
+    # output_num_units=7,
 
     # # optimization method params
     # update=nesterov_momentum,
@@ -219,7 +219,7 @@ convolutionNet=NeuralNet(
 
     # output
     output_nonlinearity=lasagne.nonlinearities.softmax,
-    output_num_units=256,
+    output_num_units=7,
 
     # optimization method params
     update=nesterov_momentum,
