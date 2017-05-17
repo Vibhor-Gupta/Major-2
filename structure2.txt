@@ -1,0 +1,12 @@
+input=3x128x64
+
+conv1=8x19x15=8x110x50
+pool1=8x55x25
+
+conv2=16x20x10=16x36x16
+pool2=16x18x8
+
+dense3=512
+dropout=512
+
+output=256
