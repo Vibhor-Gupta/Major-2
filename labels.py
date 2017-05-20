@@ -2019,9 +2019,9 @@ new_labels={}
 for k,v in label.iteritems():
 	new_labels.setdefault(v,[]).append(k)
 
-# for k,v in new_labels.iteritems():
-# 	print len(v)
-# 	print
+work=[]
+for k,v in label.iteritems():
+		work.append(k)
 
 
 train_image=[]
@@ -2029,26 +2029,69 @@ test_image=[]
 train_labels=[]
 test_labels=[]
 
+a=0
+train,test=train_test_split(work,train_size=0.8)
+for t in train:
+    a+=1
+    if a>75:
+    	break
+    train_image.append(t)
+    train_labels.append(label[t])
+a=0
+for s in test:
+   	a+=1
+   	if a>25:
+		break
+   	test_image.append(s)
+   	test_labels.append(label[s])
+
+print len(train_image),len(test_image)
+
+# for k,v in new_labels.iteritems():
+# 	print len(v)
+# 	print
+
+
+
 # train_image_2=[]
 # test_image_2=[]
 # train_labels_2=[]
 # test_labels_2=[]
-a=0
-for k , v in new_labels.iteritems():
-    train,test=train_test_split(v,train_size=0.8)
-    for t in train:
-    	a+=1
-    	if a>8:
-    		break
-        train_image.append(t)
-        train_labels.append(label[t])
-    a=0
-    for s in test:
-    	a+=1
-    	if a>2:
-    		break
-     	test_image.append(s)
-       	test_labels.append(label[s])
+# a=0
+# for k , v in new_labels.iteritems():
+#     train,test=train_test_split(v,train_size=0.8)
+    # for t in train:
+    # 	a+=1
+    # 	if a>8:
+    # 		break
+    #     train_image.append(t)
+    #     train_labels.append(label[t])
+    # a=0
+    # for s in test:
+    # 	a+=1
+    # 	if a>2:
+    # 		break
+    #  	test_image.append(s)
+    #    	test_labels.append(label[s])
+
+# a=0
+# for k , v in label.iteritems():
+# 	train1,test1=train_test_split(k,train_size=0.8)
+
+# print test1
+	# for t in train1:
+	# 	a+=1
+	# 	if a>100:
+	# 		break
+	# 	train_image.append(t)
+ #        train_labels.append(label[t])
+	# a=0
+	# for s in test1:
+	# 	a+=1
+ #    	if a>50:
+ #    		break
+ #    	test_image.append(s)
+ #       	test_labels.append(label[s])
 
 # a=0
 # for k , v in new_labels.iteritems():
@@ -2068,4 +2111,4 @@ for k , v in new_labels.iteritems():
 #        	test_labels_2.append(label[s])
 
 
-print train_labels
+# print len(work)

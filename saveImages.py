@@ -1,20 +1,20 @@
-import readFile
-import labels
-import cv2
+# import readFile
+# import labels
+# import cv2
+import theano
+# folder="D:\data-1"
+# path='D:/data-2/'
 
-folder="D:\data-1"
-path='D:/data-2/'
+# imlist=[]
 
-imlist=[]
+# for k,v in labels.label.iteritems():
+# 	imlist.append(k)
 
-for k,v in labels.label.iteritems():
-	imlist.append(k)
+# images = readFile.resize_images(folder,imlist[:100])
+# i=0
 
-images = readFile.resize_images(folder,imlist[:100])
-i=0
+# for im in images:
+# 	i+=1
+# 	cv2.imwrite(str(path) + str(i) + '.jpg',im)
 
-for im in images:
-	i+=1
-	cv2.imwrite(str(path) + str(i) + '.jpg',im)
-
-
+print theano.config.floatX

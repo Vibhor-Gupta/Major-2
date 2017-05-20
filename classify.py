@@ -22,18 +22,19 @@ test_gray_images=readFile.grayscale_images(folder,test)
 
 lbp_train_features=featureGeneration.calculate_lbp(train_gray_images)
 lbp_test_features=featureGeneration.calculate_lbp(test_gray_images)
-# lbp_train=lbp_train_features
-# lbp_test=lbp_test_features
+lbp_train=np.array(lbp_train_features)
+lbp_test=np.array(lbp_test_features)
 
+# print lbp_test.shape
 # hog_train_features=featureGeneration.calculate_hog(train_images)
 # hog_test_features=featureGeneration.calculate_hog(test_images)
-# hog_train = np.array(hog_train_features).reshape(76,3780)
-# hog_test=	np.array(hog_test_features).reshape(27,3780)
+# hog_train = np.array(hog_train_features).reshape(75,3780)
+# hog_test = np.array(hog_test_features).reshape(25,3780)
 
 model=LinearSVC()
-model.fit(lbp_train_features,labels_train)
+model.fit(lbp_train,labels_train)
 
-res=model.predict(lbp_test_features)
+res=model.predict(lbp_test)
 acc=accuracy_score(labels_test,res)
 
 print acc

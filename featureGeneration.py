@@ -6,12 +6,12 @@ import numpy as np
 from scipy.stats import itemfreq 
 from sklearn.preprocessing import normalize
 
-# folder="D:\data-1"
-# data=labels.train_image
-# images=readFile.resize_images(folder,data)
-# gray_images=readFile.grayscale_images(folder,data)
-lbp_radius=1
-lbp_numpoints=8*lbp_radius
+folder="D:\data-1"
+data=labels.test_image
+images=readFile.resize_images(folder,data)
+gray_images=readFile.grayscale_images(folder,data)
+lbp_radius=2
+lbp_numpoints=12
 lbp_bin=2**lbp_numpoints
 
 eps=1e-7
@@ -22,7 +22,7 @@ def calculate_lbp(images):
 		lbp = local_binary_pattern(im, lbp_numpoints, lbp_radius, method='default')
 		(hist, hist_len) = np.histogram(lbp.ravel(),bins=np.arange(0, lbp_bin))
 		hist = hist.astype("float")
-		hist /= hist.sum()
+		# hist /= hist.sum()
 		lbp_features.append(hist)
 	lbp_feat=np.array(lbp_features)
 	return lbp_feat
@@ -48,6 +48,16 @@ def calculate_hog(images):
 		hog_features.append(hist)
 	return hog_features
 
+# def calculate_orb(images):
+# 	orb = cv2.ORB_create()
+
+# 	orb_features=[]
+# 	for img in images:
+# 		kp = orb.detect(img,None)
+# 		kp, des = orb.compute(img, kp)
+# 		print des
+# 		break
+	
 # lbp_feat=calculate_lbp(gray_images)
 # print lbp_feat
 
@@ -56,6 +66,6 @@ def calculate_hog(images):
 # hog_feat=calculate_hog()
 # print hog_feat[0]
 
-
+# calculate_orb(gray_images)
 
 

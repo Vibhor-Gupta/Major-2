@@ -119,74 +119,16 @@ print "running the neural net"
 #     verbose=1,
 # 	)
 
-# convolutionNet=NeuralNet(
-#     layers=[('input',layers.InputLayer),
-#             ('conv2d1',layers.Conv2DLayer),
-#             ('maxpool1',layers.MaxPool2DLayer),
-#             ('conv2d2',layers.Conv2DLayer),
-#             ('maxpool2',layers.MaxPool2DLayer),
-#             ('conv2d3',layers.Conv2DLayer),
-#             ('maxpool3',layers.MaxPool2DLayer),
-#             ('dense4',layers.DenseLayer),
-#             ('dropout4',layers.DropoutLayer),
-#             ('output', layers.DenseLayer)
-#         ],
-
-    # #input layer
-    # input_shape=(None,3,128,64),
-
-    # #layer conv2d1
-    # conv2d1_num_filters=8,
-    # conv2d1_filter_size=(9, 5),
-    # conv2d1_nonlinearity=lasagne.nonlinearities.rectify,
-    # conv2d1_W=lasagne.init.GlorotUniform(),
-
-    # # layer maxpool1
-    # maxpool1_pool_size=(2, 2),
-
-#     # layer conv2d1
-#     conv2d2_num_filters=16,
-#     conv2d2_filter_size=(9, 5),
-#     conv2d2_nonlinearity=lasagne.nonlinearities.rectify,
-    
-#     # layer maxpool1
-#     maxpool2_pool_size=(2, 2),
-
-#     # layer conv2d1
-#     conv2d3_num_filters=32,
-#     conv2d3_filter_size=(9, 6),
-#     conv2d3_nonlinearity=lasagne.nonlinearities.rectify,
-    
-#     # layer maxpool1
-#     maxpool3_pool_size=(2, 2),
-
-    # #dense4
-    # dense4_num_units=256,
-    # dense4_nonlinearity=lasagne.nonlinearities.rectify,    
-    
-    # # dropout4
-    # dropout4_p=0.5,
-
-    # # output
-    # output_nonlinearity=lasagne.nonlinearities.softmax,
-    # output_num_units=7,
-
-    # # optimization method params
-    # update=nesterov_momentum,
-    # update_learning_rate=0.01,
-    # update_momentum=0.9,
-    # max_epochs=10,
-    # verbose=1,
-    # )
-
 convolutionNet=NeuralNet(
     layers=[('input',layers.InputLayer),
             ('conv2d1',layers.Conv2DLayer),
             ('maxpool1',layers.MaxPool2DLayer),
             ('conv2d2',layers.Conv2DLayer),
             ('maxpool2',layers.MaxPool2DLayer),
-            ('dense3',layers.DenseLayer),
-            ('dropout3',layers.DropoutLayer),
+            ('conv2d3',layers.Conv2DLayer),
+            ('maxpool3',layers.MaxPool2DLayer),
+            ('dense4',layers.DenseLayer),
+            ('dropout4',layers.DropoutLayer),
             ('output', layers.DenseLayer)
         ],
 
@@ -195,27 +137,35 @@ convolutionNet=NeuralNet(
 
     #layer conv2d1
     conv2d1_num_filters=8,
-    conv2d1_filter_size=(19, 15),
+    conv2d1_filter_size=(9, 5),
     conv2d1_nonlinearity=lasagne.nonlinearities.rectify,
     conv2d1_W=lasagne.init.GlorotUniform(),
 
     # layer maxpool1
     maxpool1_pool_size=(2, 2),
 
-    #layer conv2d1
+    # layer conv2d1
     conv2d2_num_filters=16,
-    conv2d2_filter_size=(20, 10),
+    conv2d2_filter_size=(9, 5),
     conv2d2_nonlinearity=lasagne.nonlinearities.rectify,
-
+    
     # layer maxpool1
     maxpool2_pool_size=(2, 2),
 
-    #dense4
-    dense3_num_units=512,
-    dense3_nonlinearity=lasagne.nonlinearities.rectify, 
+    # layer conv2d1
+    conv2d3_num_filters=32,
+    conv2d3_filter_size=(9, 6),
+    conv2d3_nonlinearity=lasagne.nonlinearities.rectify,
+    
+    # layer maxpool1
+    maxpool3_pool_size=(2, 2),
 
-    # dropout3
-    dropout3_p=0.5,
+    #dense4
+    dense4_num_units=256,
+    dense4_nonlinearity=lasagne.nonlinearities.rectify,    
+    
+    # dropout4
+    dropout4_p=0.5,
 
     # output
     output_nonlinearity=lasagne.nonlinearities.softmax,
@@ -228,6 +178,56 @@ convolutionNet=NeuralNet(
     max_epochs=10,
     verbose=1,
     )
+
+# convolutionNet=NeuralNet(
+#     layers=[('input',layers.InputLayer),
+#             ('conv2d1',layers.Conv2DLayer),
+#             ('maxpool1',layers.MaxPool2DLayer),
+#             ('conv2d2',layers.Conv2DLayer),
+#             ('maxpool2',layers.MaxPool2DLayer),
+#             ('dense3',layers.DenseLayer),
+#             ('dropout3',layers.DropoutLayer),
+#             ('output', layers.DenseLayer)
+#         ],
+
+#     #input layer
+#     input_shape=(None,3,128,64),
+
+#     #layer conv2d1
+#     conv2d1_num_filters=8,
+#     conv2d1_filter_size=(19, 15),
+#     conv2d1_nonlinearity=lasagne.nonlinearities.rectify,
+#     conv2d1_W=lasagne.init.GlorotUniform(),
+
+#     # layer maxpool1
+#     maxpool1_pool_size=(2, 2),
+
+#     #layer conv2d1
+#     conv2d2_num_filters=16,
+#     conv2d2_filter_size=(20, 10),
+#     conv2d2_nonlinearity=lasagne.nonlinearities.rectify,
+
+#     # layer maxpool1
+#     maxpool2_pool_size=(2, 2),
+
+#     #dense4
+#     dense3_num_units=512,
+#     dense3_nonlinearity=lasagne.nonlinearities.rectify, 
+
+#     # dropout3
+#     dropout3_p=0.5,
+
+#     # output
+#     output_nonlinearity=lasagne.nonlinearities.softmax,
+#     output_num_units=7,
+
+#     # optimization method params
+#     update=nesterov_momentum,
+#     update_learning_rate=0.01,
+#     update_momentum=0.9,
+#     max_epochs=10,
+#     verbose=1,
+#     )
 
 nn=convolutionNet.fit(train_im,training_label)
 preds=convolutionNet.predict(test_im)
