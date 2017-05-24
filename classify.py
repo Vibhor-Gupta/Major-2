@@ -7,6 +7,10 @@ import numpy as np
 import featureGeneration
 from sklearn.svm import LinearSVC
 import os
+import matplotlib
+import matplotlib.pyplot as plt
+import matplotlib.cm as cm
+from sklearn.metrics import confusion_matrix
 
 folder="D:\data-1"
 
@@ -39,36 +43,43 @@ res=model.predict(hog_test)
 acc=accuracy_score(labels_test,res)
 
 print acc
+cm = confusion_matrix(labels_test, res)
+plt.matshow(cm)
+plt.title('Confusion matrix')
+plt.colorbar()
+plt.ylabel('True label')
+plt.xlabel('Predicted label')
+plt.show()
 
-item="3.jpg"
-img = cv2.imread(os.path.join(folder,item))
-img3=img[1000:1944,300:2400]
-img4=cv2.resize(img3,(600,480))
+# item="3.jpg"
+# img = cv2.imread(os.path.join(folder,item))
+# img3=img[1000:1944,300:2400]
+# img4=cv2.resize(img3,(600,480))
 
-img1=readFile.grayscale_images(folder,[item])
+# img1=readFile.grayscale_images(folder,[item])
 
-hog_show_test=featureGeneration.calculate_hog(img1)
-hog_show=np.array(hog_show_test).reshape(1,3780)
+# hog_show_test=featureGeneration.calculate_hog(img1)
+# hog_show=np.array(hog_show_test).reshape(1,3780)
 
-pred=model.predict(hog_show)[0]
+# pred=model.predict(hog_show)[0]
 
-text=""
+# text=""
 
-if(pred==0):
-	text="Breakfast Sandwhich"
-if(pred==1):
-	text="Toast Sandwhich"
-if(pred==2):
-	text="Donut"
-if(pred==3):
-	text="Pizza"
-if(pred==4):
-	text="Salad"
-if(pred==5):
-	text="Chicken Nugget"
-if(pred==6):
-	text="Burger"
+# if(pred==0):
+# 	text="Breakfast Sandwhich"
+# if(pred==1):
+# 	text="Toast Sandwhich"
+# if(pred==2):
+# 	text="Donut"
+# if(pred==3):
+# 	text="Pizza"
+# if(pred==4):
+# 	text="Salad"
+# if(pred==5):
+# 	text="Chicken Nugget"
+# if(pred==6):
+# 	text="Burger"
 
-cv2.putText(img4,text,(50,50),cv2.FONT_HERSHEY_SIMPLEX,1.0, (0, 0, 255), 3)
-cv2.imshow("Image",img4)
-cv2.waitKey(0)
+# cv2.putText(img4,text,(50,50),cv2.FONT_HERSHEY_SIMPLEX,1.0, (0, 0, 255), 3)
+# cv2.imshow("Image",img4)
+# cv2.waitKey(0)

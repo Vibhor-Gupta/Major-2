@@ -5,6 +5,7 @@ import numpy as np
 import theano
 import lasagne
 from lasagne import layers
+import time
 from lasagne.updates import nesterov_momentum
 from nolearn.lasagne import NeuralNet
 from nolearn.lasagne import visualize
@@ -38,6 +39,8 @@ training_label=np.array(labels_train).astype(np.uint8)
 testing_label=np.array(labels_test).astype(np.uint8)
 
 print "running the neural net"
+
+time.sleep(10000)
 # convolutionNet1=NeuralNet(
 # 	layers=[('input',layers.InputLayer),
 # 			('conv2d1',layers.Conv2DLayer),
